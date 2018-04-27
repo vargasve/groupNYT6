@@ -5,6 +5,8 @@
     <title>NYTimes Search</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
     <script type="text/javascript" src="groupScript.js"></script>
@@ -36,9 +38,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="startY"> Start Year (Optional): </label>
-                                    <input type="int" class="form-control" id="start-year" placeholder="YYYY">
+                                    <input type="int" class="form-control" id="start-year" placeholder="YYYYMMDD">
                                     <label for="endY"> End Year (Optional): </label>
-                                    <input type="int" class="form-control" id="end-year" placeholder="YYYY">
+                                    <input type="int" class="form-control" id="end-year" placeholder="YYYYMMDD">
                                 </div>
                                 <div class="btn-grp">
                                     <button id="search"><i class="fa fa-search"></i> Search</button>
@@ -49,7 +51,7 @@
                 </div>    
             </div>
         </div>     
-
+        <div id="show-result"></div>
     </div>
 </body>
 </html>
