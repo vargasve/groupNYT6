@@ -24,11 +24,11 @@ $(document).ready(function () {
         } 
         if (startYear !== "") {
 
-            params["begin_date"] = startYear;
+            params["begin_date"] = startYear + "0101";
         }
         if (endYear !== "") {
 
-            params["end_date"] = endYear;
+            params["end_date"] = endYear + "0101";
         }
         url += '?' + $.param({
             'api-key': "1bdfbee9fe3247349883d55fd27a24d2",
@@ -50,7 +50,7 @@ $(document).ready(function () {
                 var button = $("<button>").text(i + 1);
                 console.log(result.response.docs[i].headline.main);
                 var title = $("<h3>").text(result.response.docs[i].headline.main);
-                var author = $("<p>").text("author : " + result.response.docs[i].byline.original);
+                var author = $("<p>").text(result.response.docs[i].byline.original);
 
                 newsDiv.append(button);
                 newsDiv.append(title);
