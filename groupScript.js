@@ -3,8 +3,9 @@ $(document).ready(function () {
     $("#search").on("click", function (event) {   //click button 
         event.preventDefault();
         var searchTerm = $("#search-term").val().trim();
-        var startYear = $("#start-year").val().trim();
-        var endYear = $("#end-year").val().trim();
+        var startYear;
+        var endYear;
+
 
         var limit = $("#article-count").val().trim();
         var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
