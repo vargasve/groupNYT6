@@ -12,16 +12,8 @@ $(document).ready(function () {
 
 
 
-
-
-
-       
-
-
-
-
-
         var limit = $("#article-count").val().trim();
+
 
         console.log("searchTerm: " + searchTerm);
         console.log("startYear: " + startYear);
@@ -30,6 +22,18 @@ $(document).ready(function () {
 
 
         var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+        var params = {
+            'api-key': "1bdfbee9fe3247349883d55fd27a24d2",
+            'q': searchTerm
+        } 
+        if (startYear !== "") {
+
+            params["begin_date"] = startYear + "0101";
+        }
+        if (endYear !== "") {
+
+            params["end_date"] = endYear + "0101";
+        }
         url += '?' + $.param({
             'api-key': "da7be3a4e5494580bc887c4a0b3c13de",
             'q': searchTerm
@@ -78,25 +82,21 @@ $(document).ready(function () {
                 }
 
 
+
                 newsDiv.append(button);
                 newsDiv.append(title);
                 newsDiv.append(author);
 
-
                 $("#show-result").append(newsDiv);
             }
-
-
 
         }).catch(function (err) {
             throw err;
         });
 
-
+        $("#clear").on("click", function () {
+            $("#article-list").empty();
+        });
 
     });
-
-
-
-
 });
