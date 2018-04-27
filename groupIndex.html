@@ -10,6 +10,7 @@
     <script type="text/javascript" src="groupScript.js"></script>
     
     <div class="container">
+        //Jumbotron header
         <div class="jumbotron" style="background-color: rgb(8, 26, 70) ; color: white;">
             <h1 class="text-center"><stong><i class="fa fa-newspaper-o"></i> New York Times Search</strong></h1>
         </div>
@@ -18,7 +19,7 @@
             <br>
                 <div class="card">
                     <div class="card-header">
-                      <strong><i class="fa fa-list-alt"></i>Search Parameters</strong>
+                      <strong><i class="fa fa-list-alt"></i> Search Parameters</strong>
                         <div class="card-body">
                             <form role="form">
                                 <div class="form-group">
@@ -26,13 +27,21 @@
                                     <input type="text" class="form-control" id="search-term">
                                 </div>
                                 <div class="form-group">
-                                    <label for="pwd">Number of Records to Retrieve:</label>
+                                    <label for="records">Number of Records to Retrieve:</label>
                                     <select id="article-count" class="custom-select" aria-labelledby="dropdownMenuButton">
                                         <option selected value="1">1</option>
                                         <option value="5" selected>5</option>
                                         <option value="10" selected>10</option>
                                         </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="startY"> Start Year (Optional): </label>
+                                    <input type="int" class="form-control" id="start-year" placeholder="YYYY">
+                                    <label for="endY"> End Year (Optional): </label>
+                                    <input type="int" class="form-control" id="end-year" placeholder="YYYY">
+                                </div>
+                                <button id="search"
+
                         </div>
                     </div>
                 </div>    
