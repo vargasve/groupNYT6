@@ -3,16 +3,13 @@ $(document).ready(function () {
     $("#search").on("click", function (event) {   //click button 
         event.preventDefault();
         console.log("click");
-      
+
 
         var searchTerm = $("#search-term").val().trim();
         var startYear = $("#start-year").val().trim();
         var endYear = $("#end-year").val().trim();
 
-
         var limit = $("#article-count").val().trim();
-
-
 
         console.log("searchTerm: " + searchTerm);
         console.log("startYear: " + startYear);
@@ -21,11 +18,21 @@ $(document).ready(function () {
 
 
         var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+        var params = {
+            'api-key': "1bdfbee9fe3247349883d55fd27a24d2",
+            'q': searchTerm
+        } 
+        if (startYear !== "") {
+
+            params["begin_date"] = startYear;
+        }
+        if (endYear !== "") {
+
+            params["end_date"] = endYear;
+        }
         url += '?' + $.param({
-            'api-key': "da7be3a4e5494580bc887c4a0b3c13de",
+            'api-key': "1bdfbee9fe3247349883d55fd27a24d2",
             'q': searchTerm,
-            'begin_date': startYear,
-            'end_date': endYear
         });
 
 
@@ -36,35 +43,29 @@ $(document).ready(function () {
             console.log(result);
             console.log(result.response.docs);
             //var resultSearch = result.response.docs[i].byline;
-   
 
-
-            for (i = 0; i <= limit; i++) {
-
-               
+            for (i = 0; i <= limit-1; i++) {
 
                 var newsDiv = $("<div>");
-                var button = $("<button>").text(i+1);
+                var button = $("<button>").text(i + 1);
                 console.log(result.response.docs[i].headline.main);
                 var title = $("<h3>").text(result.response.docs[i].headline.main);
                 var author = $("<p>").text("author : " + result.response.docs[i].byline.original);
-
 
                 newsDiv.append(button);
                 newsDiv.append(title);
                 newsDiv.append(author);
 
-
                 $("#show-result").append(newsDiv);
             }
-
-          
 
         }).catch(function (err) {
             throw err;
         });
 
-
+        $("#clear").on("click", function () {
+            $("#article-list").empty();
+        });
 
     });
 
